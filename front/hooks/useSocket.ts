@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 import {io} from 'socket.io-client';
 // import { io, Socket } from 'socket.io-client';
 
-const backUrl = process.env.NODE_ENV === 'production' ? 'https://sleact.nodebird.com' : 'http://localhost:4242';
+const backUrl = 'http://localhost:4242';
 
 // const sockets: { [key: string]: SocketIOClient.Socket } = {};
 const useSocket = () => {
