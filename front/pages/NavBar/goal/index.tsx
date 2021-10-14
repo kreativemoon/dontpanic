@@ -1,10 +1,11 @@
 import React from 'react';
+import { GoalContent, Title } from './styles';
 
 const Goal = () => {
     return (
-        <div>
-            <h1>Goal</h1>
-        </div>
+        <GoalContent>
+            <Title>Goal</Title>
+        </GoalContent>
   );
 };
 

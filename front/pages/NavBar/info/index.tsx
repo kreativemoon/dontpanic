@@ -29,7 +29,7 @@ const Info = () => {
                 {skills.map(skill => (
                 <li key={skill} style={{"paddingRight": "10px"}}>
                     <UsersSkills>
-                        <div style={{padding: "5px 25px", "borderRadius": "29.3px", "cursor": "pointer", border: "solid 2px #6c6c6c", color: "#6c6c6c"}}>{skill}</div>
+                        <div style={{padding: "5px 25px", "borderRadius": "29.3px", border: "solid 2px #6c6c6c", color: "#6c6c6c"}}>{skill}</div>
                     </UsersSkills>
                 </li>
                 ))}

@@ -1,10 +1,13 @@
 import React, { useState, useEffect, useCallback, VFC } from 'react';
 import useInput from '@hooks/useInput';
-import { Slime, CharacterCreation, Error, Button } from './styles';
+import { UserCreationContent } from './styles';
+import SlimeCharacter from '../../../imgs/slimes/red';
+import SlimeCharacterDefault from '../../../imgs/slimes/default';
 import axios from 'axios';
 
 interface Props {
-    dispatchModalAction: () => void;
+    dispatchModalAction: (data:any) => void;
+    data: {nickname: string, slimeColor: string} | null
 }
 
 const UserCreation: VFC<Props> = ({ dispatchModalAction }) => {
@@ -23,7 +26,7 @@ const UserCreation: VFC<Props> = ({ dispatchModalAction }) => {
         setCurrentClick(e.target.id);
         setSlimeColor(e.target.id);
         };
-        
+    console.log(slimeColor);
     useEffect(() => {
         if (currentClick !== "default") {
             let current = document.getElementById(currentClick!);
@@ -33,65 +36,43 @@ const UserCreation: VFC<Props> = ({ dispatchModalAction }) => {
 
     const onSubmit = useCallback(
         (e) => {
-          e.preventDefault();
-          if (!nickname || !nickname.trim()) {
-            return;
-          }
-          if (!mismatchError) {
-            setSignUpError(false);
-            setSignUpSuccess(false);
-            axios
-              .post('/api/users', { nickname, slimeColor }, {withCredentials: true})
-              .then(() => {
-                console.log("axios post");
-                setSignUpSuccess(true);
-                dispatchModalAction();
-              })
-              .catch((error) => {
-                console.log(error.response?.data);
-                setSignUpError(error.response?.data?.code === 403);
-              });
-          }
-        //   dispatchModalAction();
-        },
-        [nickname, slimeColor, mismatchError],
-      );
+            e.preventDefault();
+            if (nickname && slimeColor) {
+                dispatchModalAction({nickname: nickname, slimeColor: slimeColor });
+            }
+        },[nickname, slimeColor]
+    )
 
     return (
         <>
-            <form onSubmit={onSubmit}>
-                <div style={{"display":"inline-block"}}>
-                    <Slime><img src={`imgs/slimes/${currentClick}.svg`} /></Slime>
+            <UserCreationContent>
+                <div className="user-creation-slime">
+                    <div className="slime">{currentClick =='default' ? <SlimeCharacterDefault /> : <SlimeCharacter color={currentClick} />}</div>
                 </div>
-                <CharacterCreation>
-                    <label id="nickname">
-                        <div id="title">NAME</div>
-                        <div>
-                            <input placeholder="Enter Name" id="nickname" name="nickname" value={nickname} onChange={onChangeNickname} style={{"display":"block","width":"335px","fontSize":"34px","lineHeight":"44px","background":"transparent","border":"none","borderBottom":"1px solid #6c6c6c","padding":"5px 0","borderRadius":"0", "color": "#fff"}} />
-                        </div>
-                    </label>
-                    <div id="title">Choose a Color</div>
-                    <div style={{"display":"flex","marginTop":"20px","marginBottom":"20px"}}>
-                        <div onClick={GetClick} id="1" color="#06c1c1" style={{"width":"30px","height":"30px","borderRadius":"50%","margin":"0px 5px","cursor":"pointer","backgroundColor":"rgb(6, 193, 193)"}}></div>
-                        <div onClick={GetClick} id="red" color="#f9533b" style={{"width":"30px","height":"30px","borderRadius":"50%","margin":"0px 5px","cursor":"pointer","backgroundColor":"rgb(249, 83, 59)"}}></div>
-                        <div onClick={GetClick} id="3" color="#fea040" style={{"width":"30px","height":"30px","borderRadius":"50%","margin":"0px 5px","cursor":"pointer","backgroundColor":"rgb(254, 160, 64)"}}></div>
-                        <div onClick={GetClick} id="4" color="#ffbf2b" style={{"width":"30px","height":"30px","borderRadius":"50%","margin":"0px 5px","cursor":"pointer","backgroundColor":"rgb(255, 191, 43)"}}></div>
-                        <div onClick={GetClick} id="5" color="#06c17a" style={{"width":"30px","height":"30px","borderRadius":"50%","margin":"0px 5px","cursor":"pointer","backgroundColor":"rgb(6, 193, 122)"}}></div>
-                        <div onClick={GetClick} id="6" color="#396bf6" style={{"width":"30px","height":"30px","borderRadius":"50%","margin":"0px 5px","cursor":"pointer","backgroundColor":"rgb(57, 107, 246)"}}></div>
-                        <div onClick={GetClick} id="7" color="#3e579c" style={{"width":"30px","height":"30px","borderRadius":"50%","margin":"0px 5px","cursor":"pointer","backgroundColor":"rgb(62, 87, 156)"}}></div>
-                        <div onClick={GetClick} id="8" color="#fff7f1" style={{"width":"30px","height":"30px","borderRadius":"50%","margin":"0px 5px","cursor":"pointer","backgroundColor":"rgb(255, 247, 241)"}}></div>
-                        <div onClick={GetClick} id="9" color="#969696" style={{"width":"30px","height":"30px","borderRadius":"50%","margin":"0px 5px","cursor":"pointer","backgroundColor":"rgb(150, 150, 150)"}}></div>
+                <div className="user-creation-input-content">
+                    <div className="user-creation-title">NAME</div>
+                    <input placeholder="Enter Name" id="nickname" name="nickname" value={nickname} onChange={onChangeNickname} />
+                    <div className="user-creation-title">Choose a Color</div>
+                    <div className="user-creation-color-choose">
+                        <div onClick={GetClick} id="#06c1c1" className="color-circle" style={{backgroundColor: "rgb(6, 193, 193)"}} />
+                        <div onClick={GetClick} id="#f9533b" className="color-circle" style={{backgroundColor: "rgb(249, 83, 59)"}} />
+                        <div onClick={GetClick} id="#fea040" className="color-circle" style={{backgroundColor: "rgb(254, 160, 64)"}} />
+                        <div onClick={GetClick} id="#ffbf2b" className="color-circle" style={{backgroundColor: "rgb(255, 191, 43)"}} />
+                        <div onClick={GetClick} id="#06c17a" className="color-circle" style={{backgroundColor: "rgb(6, 193, 122)"}} />
+                        <div onClick={GetClick} id="#396bf6" className="color-circle" style={{backgroundColor: "rgb(57, 107, 246)"}} />
+                        <div onClick={GetClick} id="#3e579c" className="color-circle" style={{backgroundColor: "rgb(62, 87, 156)"}} />
+                        <div onClick={GetClick} id="#fff7f1" className="color-circle" style={{backgroundColor: "rgb(255, 247, 241)"}} />
+                        <div onClick={GetClick} id="#969696" className="color-circle" style={{backgroundColor: "rgb(150, 150, 150)"}} />
                     </div>
-                </CharacterCreation>
-                {mismatchError && <Error>비밀번호가 일치하지 않습니다.</Error>}
-                {!nickname && <Error>닉네임을 입력해주세요.</Error>}
-                {signUpError && <Error>이미 가입된 이메일입니다.</Error>}
-                <Button>
-                    <div id="buttons"><button type="submit">next</button></div>
-                </Button>
-            </form>
+                    <div id="user-creation-button"><button onClick={onSubmit}>NEXT</button></div>
+                </div>
+            </UserCreationContent>
         </>
     );
 }
 
 export default UserCreation;
+
+// {mismatchError && <Error>비밀번호가 일치하지 않습니다.</Error>}
+// {!nickname && <Error>닉네임을 입력해주세요.</Error>}
+// {signUpError && <Error>이미 가입된 이메일입니다.</Error>}

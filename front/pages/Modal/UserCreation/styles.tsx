@@ -1,94 +1,75 @@
 import styled from '@emotion/styled';
 
-export const Slime = styled.div`
-  // width: 9.8%;
-  // height: 21.5%;
-  font-family: 'Noto Sans KR';
-  // border: 1px solid blue;
-  margin: 200px;
-  color: #b0b0b0;
-  border-radius: 32px 32px 0px 0px;
-  -webkit-box-pack: center;
-  justify-content: center;
+export const UserCreationContent = styled.div`
   display: flex;
-  height: 30vh;
-  min-height: 200px;
-  max-height: 300px;
-`;
-
-export const CharacterCreation = styled.div`
-  margin-left: 80px;
-  font-family: 'Noto Sans KR';
-  // border: 1px solid blue;
-  display: inline-block;
-  & #title {
-    display: flex;
-    font-family: 'Noto Sans';
-    // margin: 0 0 95px 0;
-    font-size: 75px;
-    font-weight: bold;
-    color: #fff;
-  }
-`;
-export const NicknameInput = styled.input`
-  display: block;
-  font-family: 'Noto Sans KR';
-  width: 335px;
-  fontsize: 34px;
-  lineheight: 44px;
-  background: transparent;
-  border: none;
-  borderbottom: 1px solid #6c6c6c;
-  // padding: 5px 0;
-  borderradius: 0;
   color: #fff;
-`;
-export const Error = styled.div`
-  color: #e01e5a;
-  margin: 8px 0 16px;
-  font-weight: bold;
-`;
+  margin: 10%;
+  & .user-creation-slime {
+    width: 40%;
+    & .slime {
+      width: 50%;
+      margin-top: 115px;
+      padding: 20%;
+      padding-right: 0;
+      & svg {
+        width: 100%;
+      }
+    }
 
-export const Button = styled.div`
-& > #buttons {
-  // border: 1px solid blue;
-  display: flex;
-  height: 10%;
-  width: 90%;
-  margin-top: 55em;
-  margin: 3rem;
-  display: flex;
-  justify-content: center;
-}
+  }
+  & .user-creation-input-content {
+    width: 60%;
+    margin-top: 10%;
+    & .user-creation-title {
+      font-family: "NSD-Bold";
+      font-size: 3rem;
+      color: #fff;
+      margin-top: 10%;
+    }
+    & input {
+      // display: block;
+      width: 335px;
+      // fontSize: 34px;
+      font-size: 3rem;
+      line-height: 44px;
+      background: transparent;
+      border: none;
+      border-bottom: 5px solid #6c6c6c;
+      padding: 5px 0;
+      border-radius : 0;
+      color: #fff;
+      font-family: "NS-Medium";
+      margin-top: 5%;
+    }
+    & input:focus {
+      outline: none;
+      border-bottom: 5px solid #fff;
+    }
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover, 
+    input:-webkit-autofill:focus, 
+    input:-webkit-autofill: {
+      border: 3px solid transparent !important;
+    }
 
-& #buttons button {
-  display: flex;
-  position: relative;
-  box-sizing: border-box;
-  outline: none;
-  -webkit-box-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  justify-content: center;
-  font-family: 'Noto Sans';
-  font-size: 2em;
-  font-weight: 700;
-  transition: background-color 200ms ease 0s, border-color 200ms ease 0s;
-  cursor: pointer;
-  opacity: 1;
-  overflow: hidden;
-  border: 2px solid transparent;
-  padding: 0px 40px;
-  width: auto;
-  height: 48px;
-  border-radius: 0.5rem;
-  color: rgb(255, 255, 255) !important;
-  background-color: #6c6c6c;
-  font-weight: bold;
-  // letter-spacing: 8px;
+    & .user-creation-color-choose {
+      display: flex;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      margin-top: 3%;
 
-  &:hover {
-    background-color: #5485ff;
-    color: #fff;
+      & .color-circle {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-right: 41px;
+        cursor: pointer;
+      }
+    }
+    & #user-creation-button {
+      float: right;
+      margin-top: 15%;
+      margin-right: -115px;
+    }
   }
 `;

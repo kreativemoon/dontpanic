@@ -1,17 +1,26 @@
-import React from 'react';
-import { Title, Content, Choose } from './styles';
+import React, { VFC } from 'react';
+import { UserModalContent } from './styles';
 
-const Intro = () => {
+interface Props {
+    dispatchModalAction: () => void;
+}
+
+const Intro: VFC<Props> = ({ dispatchModalAction }) => {
     return (
-        <>
-            <Title>DON'T PANIC</Title>
-            <Content>
-                You can experience peer learning in this metaverse,<br />
+        <UserModalContent>
+            <div className="user-modal-title">
+                Don't Panic
+            </div>
+            <div className="user-modal-content">
+            You can experience peer learning in this metaverse,<br />
                 which was created with the ideas from the developers at 42 Seoul.<br />
                 Through this platform, we all can grow as software developers.
-            </Content>
-            <Choose>Choose your own character</Choose>
-        </>
+            </div>
+            <div className="user-modal-footer">
+                Choose your own character
+            </div>
+            <div className="user-modal-button"><button onClick={dispatchModalAction}>CONTINUE</button></div>
+        </UserModalContent>
     );
 }
 

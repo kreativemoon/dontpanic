@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="135" height="135" viewBox="0 0 135 135">
+    <defs>
+        <path id="vvfhsdk2pb" d="M44.943 27.698c1.12 1.093 1.125 2.906.017 3.99l-26.555 26.86c-1.082 1.135-2.872 1.135-3.985.009-1.08-1.09-1.075-2.91.01-4.045l22.36-22.575 2.078-2.237-2.061-2.22L14.42 4.835c-1.077-1.086-1.077-2.902 0-3.991 1.112-1.125 2.897-1.127 3.98.003l26.543 26.851z"/>
+        <path id="ayfs4b22ed" d="M0 0H59.4V59.4H0z"/>
+        <filter id="2vb0zjv8ha" color-interpolation-filters="auto">
+            <feColorMatrix in="SourceGraphic" values="0 0 0 0 0.878850 0 0 0 0 0.878850 0 0 0 0 0.878850 0 0 0 1.000000 0"/>
+        </filter>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <g filter="url(#2vb0zjv8ha)" transform="translate(-1165.000000, -2481.000000) translate(100.000000, 100.000000) translate(1065.000000, 2381.000000)">
+                        <g transform="translate(67.500000, 67.500000) rotate(-270.000000) translate(-67.500000, -67.500000) translate(37.800000, 37.800000)">
+                            <mask id="e90z7zbcyc" fill="#fff">
+                                <use xlink:href="#vvfhsdk2pb"/>
+                            </mask>
+                            <g mask="url(#e90z7zbcyc)">
+                                <g transform="translate(0.000000, 0.000000)">
+                                    <mask id="eojf151tae" fill="#fff">
+                                        <use xlink:href="#ayfs4b22ed"/>
+                                    </mask>
+                                    <use fill="#000" xlink:href="#ayfs4b22ed"/>
+                                    <g mask="url(#eojf151tae)" opacity=".1">
+                                        <path d="M0 0H59.4V59.4H0z"/>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                    <path d="M0 0H135V135H0z" transform="translate(-1165.000000, -2481.000000) translate(100.000000, 100.000000) translate(1065.000000, 2381.000000)"/>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

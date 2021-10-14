@@ -1,6 +1,7 @@
 import { ChatZone, Section, StickyHeader } from './styles';
 import { IChat, IDM } from '@typings/db';
 import React, { FC, RefObject, useCallback } from 'react';
+import { ChatContent } from '@pages/NavBar/chat/styles';
 
 // interface Props {
 
@@ -8,24 +9,14 @@ import React, { FC, RefObject, useCallback } from 'react';
 // }
 // const ChatList: FC<Props> = ({ chatSections }) => {
 const ChatList = () => {
-
+  const chats = [{nickname: 'E.A.T_kristine', content: '셜라샬라 샬라숑'}]
     return (
         <ChatZone>
-             {/* {Object.entries(chatSections).map(([date, chats]) => {
-          return (
-            <Section className={`section-${date}`} key={date}>
-              <StickyHeader>
-                <button>{date}</button>
-              </StickyHeader>
-              {chats.map((chat) => (
-                // <Chat key={chat.id} data={chat} />
-                <>
-                <div>{chat.content}</div>
-                </>
-              ))}
-            </Section>
-          );
-        })} */}
+          {/* <Section> */}
+            {chats.map((chat) => (
+                <ChatContent key={chat.nickname} {...chat} />
+                ))}
+          {/* </Section> */}
         </ChatZone>
   );
 };

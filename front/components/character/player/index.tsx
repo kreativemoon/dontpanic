@@ -14,7 +14,12 @@ const Player: FC<Props> = ({ skin }) => {
       };
 
     useKeyPress((e) => {
+      if (e.key == "ArrowRight" || e.key == "ArrowLeft" || e.key == "ArrowUp" || e.key == "ArrowDown") {
         walk(e.key.replace("Arrow", "").toLowerCase());
+      }
+      else {
+        return
+      }
         e.preventDefault();
     })
     return <Actor

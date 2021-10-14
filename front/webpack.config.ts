@@ -5,9 +5,10 @@ import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 // import 'webpack-dev-server';
 import { Configuration as WebpackConfiguration } from "webpack";
 import { Configuration as WebpackDevServerConfiguration } from "webpack-dev-server";
-
 const isDevelopment = process.env.NODE_ENV !== 'production';
+import dotenv from 'dotenv';
 
+dotenv.config();
 interface Configuration extends WebpackConfiguration {
   devServer?: WebpackDevServerConfiguration;
 }
@@ -72,6 +73,9 @@ const config: Configuration = {
     ],
   },
   plugins: [
+    new webpack.DefinePlugin({
+      "process.env": JSON.stringify(process.env)
+    }),
     new ForkTsCheckerWebpackPlugin({
       async: false,
       // eslint: {

@@ -4,13 +4,14 @@ import { Link } from 'react-router-dom';
 
 interface Props {
     show: boolean;
-    showConfirmCallToAction: boolean;
-    close: () => void;
-    confirmButtonText: string | JSX.Element;
-    confirmButtonAction: () => void;
+    // showConfirmCallToAction: boolean;
+    // close: () => void;
+    // confirmButtonText: string | JSX.Element;
+    // confirmButtonAction: () => void;
 }
 
-const Modal: FC<Props> = ({ show, children, showConfirmCallToAction, close, confirmButtonText, confirmButtonAction}) => {
+// const Modal: FC<Props> = ({ show, children, showConfirmCallToAction, close, confirmButtonText, confirmButtonAction}) => {
+    const Modal: FC<Props> = ({ show, children }) => {
 
     if (!show) {
         return null;
@@ -19,11 +20,6 @@ const Modal: FC<Props> = ({ show, children, showConfirmCallToAction, close, conf
     return (
     <Rectangle>
         {children}
-        { confirmButtonText == 'START' ? 
-        <Link style={{"textDecoration": "none"}} to='/map'>
-            <div id="buttons"><button className="ModalButton" onClick={confirmButtonAction}>{confirmButtonText}</button></div>
-        </Link> :
-        confirmButtonText == '' ? <></> : <div id="buttons"><button className="ModalButton" onClick={confirmButtonAction}>{confirmButtonText}</button></div>}
     </Rectangle>
     
   );
